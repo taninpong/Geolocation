@@ -51,15 +51,18 @@ namespace geolocation
             try
             {
                 DateStart.Text = "DateStart : " + DateTime.UtcNow.ToString();
-                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
+                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
                 var location = await Geolocation.GetLocationAsync(request);
                 //var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location != null)
-                {
-                    //Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                    LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
-                    DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
-                }
+                //if (location == null)
+                //{
+                //    location = await Geolocation.GetLocationAsync(request);
+                //    //DependencyService.Get<IGetGPS>().GetGPS();
+                //    //Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+
+                //}
+                LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
+                DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -81,6 +84,8 @@ namespace geolocation
                 // Unable to get location
                 Console.WriteLine(ex);
             }
+
+
         }
 
         private async void ButtonClicked2(object sender, EventArgs e)
@@ -131,5 +136,8 @@ namespace geolocation
             var data = Map.OpenAsync(location2, options);
             double distance = Location.CalculateDistance(x, location2, DistanceUnits.Kilometers);
         }
+
+
+
     }
 }
