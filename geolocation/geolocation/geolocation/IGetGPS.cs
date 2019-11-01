@@ -4,5 +4,6 @@
     {
         void GetGPS();
         bool Getvalue();
+
     }
 }

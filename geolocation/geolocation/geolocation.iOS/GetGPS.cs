@@ -1,5 +1,4 @@
-﻿using System;
-using Foundation;
+﻿using Foundation;
 using UIKit;
 using Xamarin.Forms;
 
@@ -10,7 +9,7 @@ namespace geolocation.iOS
     {
         public bool Getvalue()
         {
-            return true;
+            return false;
         }
 
         //public bool Getvalue()
@@ -18,11 +17,6 @@ namespace geolocation.iOS
         //    var url = new NSUrl($"app-settings:");
         //    UIApplication.SharedApplication.OpenUrl(url); 
         //}
-
-        public void OpenAppSettings()
-        {
-
-        }
 
         void IGetGPS.GetGPS()
         {
