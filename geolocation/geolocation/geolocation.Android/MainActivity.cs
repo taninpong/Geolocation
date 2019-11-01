@@ -23,42 +23,24 @@ namespace geolocation.Droid
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
             FormsMaps.Init(this, savedInstanceState);
-
-
-
-
-
-
         }
 
 
 
-        protected override void OnStart()
-        {
-            base.OnStart();
-            LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
-            if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
-            {
-                Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
-                intent.AddFlags(ActivityFlags.NewTask);
-                intent.AddFlags(ActivityFlags.MultipleTask);
-                Android.App.Application.Context.StartActivity(intent);
-            }
-            else
-            {
-                //AlertDialog();
-            }
-        }
-
-        //}
-        //public void View()
+        //protected override void OnStart()
         //{
-        //    LocationManager locationManager = (LocationManager)Forms.Context.GetSystemService(Context.LocationService);
-
-        //    if (locationManager.IsProviderEnabled(LocationManager.GpsProvider) == false)
+        //    base.OnStart();
+        //    LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+        //    if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
         //    {
-        //        Intent gpsSettingIntent = new Intent(Settings.ActionLocationSourceSettings);
-        //        Forms.Context.StartActivity(gpsSettingIntent);
+        //        Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+        //        intent.AddFlags(ActivityFlags.NewTask);
+        //        intent.AddFlags(ActivityFlags.MultipleTask);
+        //        Android.App.Application.Context.StartActivity(intent);
+        //    }
+        //    else
+        //    {
+        //        //AlertDialog();
         //    }
         //}
 
@@ -66,14 +48,14 @@ namespace geolocation.Droid
         {
             //this is handled in the PCL
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
-            if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
-            {
-                Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
-                intent.AddFlags(ActivityFlags.NewTask);
-                intent.AddFlags(ActivityFlags.MultipleTask);
-                Android.App.Application.Context.StartActivity(intent);
-            }
+            //LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+            //if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            //{
+            //    Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+            //    intent.AddFlags(ActivityFlags.NewTask);
+            //    intent.AddFlags(ActivityFlags.MultipleTask);
+            //    Android.App.Application.Context.StartActivity(intent);
+            //}
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

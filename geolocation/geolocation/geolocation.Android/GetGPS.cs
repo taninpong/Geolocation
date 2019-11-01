@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Locations;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using geolocation.Droid;
 
 [assembly: Xamarin.Forms.Dependency(typeof(GetGPS))]
@@ -27,10 +17,20 @@ namespace geolocation.Droid
                 intent.AddFlags(ActivityFlags.MultipleTask);
                 Android.App.Application.Context.StartActivity(intent);
             }
+        }
+
+        bool IGetGPS.Getvalue()
+        {
+            LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+            if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            {
+                return false;
+            }
             else
             {
-                //AlertDialog();
+                return true;
             }
         }
+
     }
 }
