@@ -36,18 +36,18 @@ namespace geolocation.Droid
         protected override void OnStart()
         {
             base.OnStart();
-            //LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
-            //if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
-            //{
-            //    Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
-            //    intent.AddFlags(ActivityFlags.NewTask);
-            //    intent.AddFlags(ActivityFlags.MultipleTask);
-            //    Android.App.Application.Context.StartActivity(intent);
-            //}
-            //else
-            //{
-            //    //AlertDialog();
-            //}
+            LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+            if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            {
+                Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                intent.AddFlags(ActivityFlags.NewTask);
+                intent.AddFlags(ActivityFlags.MultipleTask);
+                Android.App.Application.Context.StartActivity(intent);
+            }
+            else
+            {
+                //AlertDialog();
+            }
         }
 
         //}
