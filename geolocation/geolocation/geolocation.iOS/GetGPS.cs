@@ -26,7 +26,7 @@ namespace geolocation.iOS
             //var url = new NSUrl($"app-settings:");
             //var data = UIApplication.LaunchOptionsLocationKey();
             var data = CLLocationManager.LocationServicesEnabled;
-            var url = new NSUrl("app-settings:LOCATION_SERVICES");
+            var url = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
             if (data == false)
             {
                 //var url = new NSUrl("App-Prefs:app-settings=LOCATION_SERVICES");
