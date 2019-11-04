@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using Android.App;
+using Android.Content;
 using Android.Locations;
 using geolocation.Droid;
 
@@ -32,5 +33,13 @@ namespace geolocation.Droid
             }
         }
 
+        //public void OpenAppSettings()
+        //{
+        //    var intent = new Intent(Android.Provider.Settings.ActionApplicationDetailsSettings);
+        //    intent.AddFlags(ActivityFlags.NewTask);
+        //    var uri = Android.Net.Uri.FromParts("package", , null);
+        //    intent.SetData(uri);
+        //    Application.Context.StartActivity(intent);
+        //}
     }
 }

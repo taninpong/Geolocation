@@ -20,8 +20,10 @@ namespace geolocation.iOS
 
         void IGetGPS.GetGPS()
         {
-            var url = new NSUrl($"app-settings:");
-            UIApplication.SharedApplication.OpenUrl(url);
+            //UIApplication.SharedApplication.OpenUrl(new NSUrl(UIKit.UIApplication.OpenSettingsUrlString));
+            //var url = new NSUrl($"app-settings:");
+            var url2 = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
+            UIApplication.SharedApplication.OpenUrl(url2);
         }
     }
 }

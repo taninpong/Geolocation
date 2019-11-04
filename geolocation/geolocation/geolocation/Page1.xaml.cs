@@ -50,26 +50,32 @@ namespace geolocation
         {
             try
             {
-                var check = DependencyService.Get<IGetGPS>().Getvalue();
                 DateStart.Text = "DateStart : " + DateTime.UtcNow.ToString();
-                if (check == false)
-                {
-                    bool answer = await DisplayAlert("แจ้งเตือน", "กรุณาเปิดตำแหน่งของโทรศัพย์ก่อน", "เปิด", "ไม่เปิด");
-                    //Debug.WriteLine("Answer: " + answer);
-                    if (answer == true)
-                    {
-                        DependencyService.Get<IGetGPS>().GetGPS();
-                    }
-                }
-                else
-                {
-                    var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
-                    var location = await Geolocation.GetLocationAsync(request);
-                    //var location = await Geolocation.GetLastKnownLocationAsync();
-                    //Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                    LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
-                    DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
-                }
+                DependencyService.Get<IGetGPS>().GetGPS();
+                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
+                var location = await Geolocation.GetLocationAsync(request);
+                LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
+                DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
+
+
+                //var check = DependencyService.Get<IGetGPS>().Getvalue();
+                //var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
+                //DateStart.Text = "DateStart : " + DateTime.UtcNow.ToString();
+                //if (check == false)
+                //{
+                //    bool answer = await DisplayAlert("แจ้งเตือน", "กรุณาเปิดตำแหน่งของโทรศัพย์ก่อน", "เปิด", "ไม่เปิด");
+                //    //Debug.WriteLine("Answer: " + answer);
+                //    if (answer == true)
+                //    {
+                //        DependencyService.Get<IGetGPS>().GetGPS();
+                //    }
+                //}
+                //else
+                //{
+                //    var location = await Geolocation.GetLocationAsync(request);
+                //    LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
+                //    DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
+                //}
             }
             catch (FeatureNotSupportedException fnsEx)
             {
