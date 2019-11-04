@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using CoreLocation;
+using Foundation;
 using UIKit;
 using Xamarin.Forms;
 
@@ -9,6 +10,7 @@ namespace geolocation.iOS
     {
         public bool Getvalue()
         {
+            //var check = NSLocationAlwaysUsageDescription();
             return false;
         }
 
@@ -22,8 +24,14 @@ namespace geolocation.iOS
         {
             //UIApplication.SharedApplication.OpenUrl(new NSUrl(UIKit.UIApplication.OpenSettingsUrlString));
             //var url = new NSUrl($"app-settings:");
-            var url2 = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
-            UIApplication.SharedApplication.OpenUrl(url2);
+            //var data = UIApplication.LaunchOptionsLocationKey();
+            var data = CLLocationManager.LocationServicesEnabled;
+            if (data == false)
+            {
+                var url2 = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
+                UIApplication.SharedApplication.OpenUrl(url2);
+            }
+            
         }
     }
 }
