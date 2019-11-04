@@ -28,8 +28,8 @@ namespace geolocation.iOS
             var data = CLLocationManager.LocationServicesEnabled;
             if (data == false)
             {
-                var url = new NSUrl("app-settings:LOCATION_SERVICES");
-                //var url = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
+                //var url = new NSUrl("app-settings:LOCATION_SERVICES");
+                var url = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
                 UIApplication.SharedApplication.OpenUrl(url);
             }
             
