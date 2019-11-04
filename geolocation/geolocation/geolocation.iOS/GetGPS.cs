@@ -28,11 +28,11 @@ namespace geolocation.iOS
             var data = CLLocationManager.LocationServicesEnabled;
             //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
             var url = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
-            if (data == false)
-            {
-                //var url = new NSUrl("App-Prefs:app-settings=LOCATION_SERVICES");
-                UIApplication.SharedApplication.OpenUrl(url);
-            }
+            //if (data == false)
+            //{
+            //    //var url = new NSUrl("App-Prefs:app-settings=LOCATION_SERVICES");
+            //    UIApplication.SharedApplication.OpenUrl(url);
+            //}
             
         }
     }
