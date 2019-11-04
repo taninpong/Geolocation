@@ -25,7 +25,7 @@ namespace geolocation.iOS
             //UIApplication.SharedApplication.OpenUrl(new NSUrl(UIKit.UIApplication.OpenSettingsUrlString));
             //var url = new NSUrl($"app-settings:");
             //var data = UIApplication.LaunchOptionsLocationKey();
-            var data = CLLocationManager.LocationServicesEnabled;
+            //var data = CLLocationManager.LocationServicesEnabled;
             //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
             //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
             //NSString settingsString = UIApplication.OpenSettingsUrlString;
@@ -40,11 +40,11 @@ namespace geolocation.iOS
                 // This may get your app rejected using the strings below
                 if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=General"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&path=LOCATION"));
                 }
                 else
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("prefs:root=General"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("prefs:root=Privacy&path=LOCATION"));
                 }
             }
             else if (CLLocationManager.Status == CLAuthorizationStatus.Denied ||
@@ -54,6 +54,7 @@ namespace geolocation.iOS
                 //Console.WriteLine("Location Services are off just for your app, got to app settings");
                 UIApplication.SharedApplication.OpenUrl(new NSUrl(UIApplication.OpenSettingsUrlString));
             }
+
             //UIApplication.SharedApplication.OpenUrl(new NSUrl("app-settings:LOCATION_SERVICES"));
             //UIApplication.SharedApplication.OpenUrl(url);
             //if (data == false)
