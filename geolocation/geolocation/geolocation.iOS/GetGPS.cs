@@ -29,7 +29,7 @@ namespace geolocation.iOS
             if (data == false)
             {
                 //var url = new NSUrl("app-settings:LOCATION_SERVICES");
-                var url = new NSUrl("App-Prefs:root=LOCATION_SERVICES");
+                var url = new NSUrl("App-Prefs:app-settings=LOCATION_SERVICES");
                 UIApplication.SharedApplication.OpenUrl(url);
             }
             
