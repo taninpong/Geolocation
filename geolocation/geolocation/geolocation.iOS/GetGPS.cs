@@ -37,7 +37,7 @@ namespace geolocation.iOS
             var data = CLLocationManager.LocationServicesEnabled;
             if (data == false)
             {
-                var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION_SERVICES");
+                var url = new NSUrl("App-Prefs:root=PRIVACY&path=LOCATION_SERVICES");
                 UIApplication.SharedApplication.OpenUrl(url);
             }
             else
