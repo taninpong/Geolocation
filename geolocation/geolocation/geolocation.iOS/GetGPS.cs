@@ -26,18 +26,25 @@ namespace geolocation.iOS
             //var url = new NSUrl($"app-settings:");
             //var data = UIApplication.LaunchOptionsLocationKey();
             //var data = CLLocationManager.LocationServicesEnabled;
-            //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
+            //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION_SERVICES");
             //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
             //NSString settingsString = UIApplication.OpenSettingsUrlString;
             //NSUrl url = new NSUrl(settingsString);
             //UIApplication.SharedApplication.OpenUrl(url);
 
-            var settingsString = UIKit.UIApplication.OpenSettingsUrlString;
-            var url = new NSUrl(settingsString);
-            UIApplication.SharedApplication.OpenUrl(url);
+            //var manager = new CLLocationManager();
+            //var location = manager.Location;
+            var data = CLLocationManager.LocationServicesEnabled;
+            if (data == false)
+            {
+                var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION_SERVICES");
+                UIApplication.SharedApplication.OpenUrl(url);
+            }
+            else
+            {
+                UIApplication.SharedApplication.OpenUrl(new NSUrl(UIApplication.OpenSettingsUrlString));
+            }
 
-
-            
 
             //UIApplication.SharedApplication.OpenUrl(new NSUrl("app-settings:LOCATION_SERVICES"));
             //UIApplication.SharedApplication.OpenUrl(url);
