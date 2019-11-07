@@ -39,11 +39,11 @@ namespace geolocation.iOS
             {
                 if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("Prefs:root=Privacy&path=LOCATION"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&&path=LOCATION_SERVICES"));
                 }
                 else
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&path=LOCATION"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("Prefs:root=Privacy&&path=LOCATION_SERVICES"));
                 }
                 //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
                 //UIApplication.SharedApplication.OpenUrl(url);
