@@ -39,20 +39,23 @@ namespace geolocation.iOS
             {
                 if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&path=LOCATION"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("Prefs:root=Privacy&path=LOCATION"));
                 }
                 else
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("Prefs:root=Privacy&path=LOCATION"));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&path=LOCATION"));
                 }
                 //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
                 //UIApplication.SharedApplication.OpenUrl(url);
                 //var url = new NSUrl("App-Prefs:root=PRIVACY&path=LOCATION_SERVICES");
                 //UIApplication.SharedApplication.OpenUrl(url);
             }
-            else
+            else if (CLLocationManager.Status == CLAuthorizationStatus.Denied ||
+                     CLLocationManager.Status == CLAuthorizationStatus.NotDetermined ||
+                     CLLocationManager.Status == CLAuthorizationStatus.Restricted)
             {
-                UIApplication.SharedApplication.OpenUrl(new NSUrl(UIApplication.OpenSettingsUrlString));
+                var xxx = UIApplication.OpenSettingsUrlString;
+                UIApplication.SharedApplication.OpenUrl(new NSUrl(xxx));
             }
             //UIApplication.SharedApplication.OpenUrl(new NSUrl("app-settings:LOCATION_SERVICES"));
             //UIApplication.SharedApplication.OpenUrl(url);
