@@ -37,8 +37,16 @@ namespace geolocation.iOS
             var data = CLLocationManager.LocationServicesEnabled;
             if (data == false)
             {
-                var url = new NSUrl($"app-settings:privacy");
-                UIApplication.SharedApplication.OpenUrl(url);
+                if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+                {
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=Privacy&path=LOCATION"));
+                }
+                else
+                {
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("Prefs:root=Privacy&path=LOCATION"));
+                }
+                //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
+                //UIApplication.SharedApplication.OpenUrl(url);
                 //var url = new NSUrl("App-Prefs:root=PRIVACY&path=LOCATION_SERVICES");
                 //UIApplication.SharedApplication.OpenUrl(url);
             }
@@ -46,8 +54,6 @@ namespace geolocation.iOS
             {
                 UIApplication.SharedApplication.OpenUrl(new NSUrl(UIApplication.OpenSettingsUrlString));
             }
-
-
             //UIApplication.SharedApplication.OpenUrl(new NSUrl("app-settings:LOCATION_SERVICES"));
             //UIApplication.SharedApplication.OpenUrl(url);
             //if (data == false)
