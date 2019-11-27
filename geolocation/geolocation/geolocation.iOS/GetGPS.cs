@@ -43,7 +43,7 @@ namespace geolocation.iOS
                 }
                 else
                 {
-                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=PRIVACY&path=LOCATION_SERVICES""));
+                    UIApplication.SharedApplication.OpenUrl(new NSUrl("App-Prefs:root=PRIVACY&path=LOCATION_SERVICES"));
                 }
                 //var url = new NSUrl("App-Prefs:root=Privacy&path=LOCATION");
                 //UIApplication.SharedApplication.OpenUrl(url);
