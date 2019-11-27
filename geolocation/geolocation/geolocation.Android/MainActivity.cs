@@ -23,6 +23,7 @@ namespace geolocation.Droid
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             LoadApplication(new App());
             FormsMaps.Init(this, savedInstanceState);
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
         }
 
 
@@ -48,15 +49,17 @@ namespace geolocation.Droid
         {
             //this is handled in the PCL
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            //LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
-            //if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
-            //{
-            //    Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
-            //    intent.AddFlags(ActivityFlags.NewTask);
-            //    intent.AddFlags(ActivityFlags.MultipleTask);
-            //    Android.App.Application.Context.StartActivity(intent);
-            //}
+            LocationManager LM = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
+            if (LM.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            {
+                Intent intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                intent.AddFlags(ActivityFlags.NewTask);
+                intent.AddFlags(ActivityFlags.MultipleTask);
+                Android.App.Application.Context.StartActivity(intent);
+            }
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }
+
+//

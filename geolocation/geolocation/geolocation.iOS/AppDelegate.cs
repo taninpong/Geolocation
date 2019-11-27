@@ -22,7 +22,7 @@ namespace geolocation.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-
+            Xamarin.FormsGoogleMaps.Init("AIzaSyDnUQpdyaDokofJJQSJTzrS5FW83fLEUfw");
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             return base.FinishedLaunching(app, options);

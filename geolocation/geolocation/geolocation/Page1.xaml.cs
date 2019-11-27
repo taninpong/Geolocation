@@ -51,13 +51,11 @@ namespace geolocation
             try
             {
                 DateStart.Text = "DateStart : " + DateTime.UtcNow.ToString();
-                DependencyService.Get<IGetGPS>().GetGPS();
-                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
+                //DependencyService.Get<IGetGPS>().GetGPS();
+                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
                 var location = await Geolocation.GetLocationAsync(request);
                 LabelLatLong.Text = "Lat : " + location.Latitude + "Long : " + location.Longitude;
                 DateEnd.Text = "DateEnd : " + DateTime.UtcNow.ToString();
-
-
                 //var check = DependencyService.Get<IGetGPS>().Getvalue();
                 //var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(1));
                 //DateStart.Text = "DateStart : " + DateTime.UtcNow.ToString();
@@ -101,40 +99,41 @@ namespace geolocation
 
         private async void ButtonClicked2(object sender, EventArgs e)
         {
-            try
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
-                var location = await Geolocation.GetLocationAsync(request);
-                //var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location != null)
-                {
-                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                    LabelLatLong.Text = "Lat : " + location.Latitude + " Long : " + location.Longitude;
-                }
-                var location2 = new Location(location.Latitude, location.Longitude);
-                var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
-                await Map.OpenAsync(location2, options);
-            }
-            catch (FeatureNotSupportedException fnsEx)
-            {
-                // Handle not supported on device exception
-                Console.WriteLine(fnsEx);
-            }
-            catch (FeatureNotEnabledException fneEx)
-            {
-                // Handle not enabled on device exception
-                Console.WriteLine(fneEx);
-            }
-            catch (PermissionException pEx)
-            {
-                // Handle permission exception
-                Console.WriteLine(pEx);
-            }
-            catch (Exception ex)
-            {
-                // Unable to get location
-                Console.WriteLine(ex);
-            }
+            //try
+            //{
+            //    var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
+            //    var location = await Geolocation.GetLocationAsync(request);
+            //    //var location = await Geolocation.GetLastKnownLocationAsync();
+            //    if (location != null)
+            //    {
+            //        Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+            //        LabelLatLong.Text = "Lat : " + location.Latitude + " Long : " + location.Longitude;
+            //    }
+            //    var location2 = new Location(location.Latitude, location.Longitude);
+            //    var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
+            //    await Map.OpenAsync(location2, options);
+            //}
+            //catch (FeatureNotSupportedException fnsEx)
+            //{
+            //    // Handle not supported on device exception
+            //    Console.WriteLine(fnsEx);
+            //}
+            //catch (FeatureNotEnabledException fneEx)
+            //{
+            //    // Handle not enabled on device exception
+            //    Console.WriteLine(fneEx);
+            //}
+            //catch (PermissionException pEx)
+            //{
+            //    // Handle permission exception
+            //    Console.WriteLine(pEx);
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Unable to get location
+            //    Console.WriteLine(ex);s
+            //}
+            await Navigation.PushAsync(new Getmap());
         }
 
         private async void ButtonClicked3(object sender, EventArgs e)
