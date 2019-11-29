@@ -8,7 +8,10 @@
              x:Class="geolocation.Getmap">
     <!--xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"-->
     <ContentPage.Content>
+        
+        <!---->
         <maps:Map x:Name="map" IsShowingUser="true" VerticalOptions="FillAndExpand" >
         </maps:Map>
+
     </ContentPage.Content>
 </ContentPage>

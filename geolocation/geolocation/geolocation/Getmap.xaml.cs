@@ -17,10 +17,12 @@ namespace geolocation
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Getmap : ContentPage
     {
+        Xamarin.Forms.Maps.Geocoder geoCoder;
         public Getmap()
         {
             //Map map = new Map();
             InitializeComponent();
+            geoCoder = new Xamarin.Forms.Maps.Geocoder();
             //var map = new Xamarin.Forms.Maps.Map(Xamarin.Forms.GoogleMaps.MapSpan.FromCenterAndRadius(new Xamarin.Forms.GoogleMaps.Position(37, -122), Xamarin.Forms.GoogleMaps.Distance.FromKilometers(10)));
             //var map = new Xamarin.Forms.Maps.Map(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(37, -122), Xamarin.Forms.Maps.Distance.FromMiles(10)));
             //var pin = new Pin()
@@ -113,29 +115,29 @@ namespace geolocation
                 //    string pinName = ((Xamarin.Forms.Maps.Pin)s).Label;
                 //    await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
                 //};
-                map.MapClicked +=  async(s, arg) =>
-                {
-                    var x = arg.Position.Latitude;
-                    var y = arg.Position.Longitude;
-                    var answer = await this.DisplayAlert("แจ้งเตือน", $"ต้องการMarkใช่หรือไม่", "Yes", "CLOSE");
-                    Debug.WriteLine("Answer: " + answer);
+                map.MapClicked += async (s, arg) =>
+               {
+                   var x = arg.Position.Latitude;
+                   var y = arg.Position.Longitude;
+                   var answer = await this.DisplayAlert("แจ้งเตือน", $"ต้องการMarkใช่หรือไม่", "Yes", "CLOSE");
+                   Debug.WriteLine("Answer: " + answer);
                     //this.DisplayAlert("แจ้งเตือน", $"ต้องการMarkใช่หรือไม่", "Yes", "CLOSE");
                     if (answer == true)
-                    {
+                   {
 
-                        Xamarin.Forms.Maps.Pin boardwalkPinx = new Xamarin.Forms.Maps.Pin
-                        {
-                            Label = "โจ๊กเผาหม้อ",
-                            Address = "โจ๊กกกกกกกก",
-                            Type = Xamarin.Forms.Maps.PinType.SearchResult,
-                            Position = new Xamarin.Forms.Maps.Position(x, y),
+                       Xamarin.Forms.Maps.Pin boardwalkPinx = new Xamarin.Forms.Maps.Pin
+                       {
+                           Label = "โจ๊กเผาหม้อ",
+                           Address = "โจ๊กกกกกกกก",
+                           Type = Xamarin.Forms.Maps.PinType.SearchResult,
+                           Position = new Xamarin.Forms.Maps.Position(x, y),
 
                             //16.43307340526658, 102.8255601788635  16.480157,102.818123
                         };
-                        map.Pins.Add(boardwalkPinx);
-                    }
+                       map.Pins.Add(boardwalkPinx);
+                   }
 
-                };
+               };
 
 
                 Content = map;
@@ -168,36 +170,6 @@ namespace geolocation
             }
         }
 
-        //void OnMapClicked(object sender, MapClickedEventArgs e)
-        //{
-        //    var lat = e.Position.Latitude.ToString("0.000");
-        //    var lng = e.Position.Longitude.ToString("0.000");
-        //    this.DisplayAlert("MapLongClicked", $"{lat}/{lng}", "CLOSE");
-        //    //Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map();
-        //    //map.MapClicked += OnMapClicked;
-        //    //{
-        //    //    var lat = e.Position.Latitude.ToString("0.000");
-        //    //    var lng = e.Position.Longitude.ToString("0.000");
-        //    //    this.DisplayAlert("MapLongClicked", $"{lat}/{lng}", "CLOSE");
-        //    //};
-        //    ////System.Diagnostics.Debug.WriteLine($"MapClick: {e.Position.Latitude}, {e.Position.Longitude}");
-        //    //System.Diagnostics.Debug.WriteLine($"MapClick: {e.Position.Latitude}, {e.Position.Longitude}");
-        //}
-
-        //void  clickme(object sender, Xamarin.Forms.GoogleMaps.MapClickedEventArgs e)
-        // {
-        //     //map.MapLongClicked += async (sender, e) =>
-        //     //{
-        //         var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
-        //         var location = await Geolocation.GetLocationAsync(request);
-        //         this.DisplayAlert("MapLongClicked", $"{location.Latitude}/{location.Longitude}", "CLOSE");
-        //     //};
-        // }
-
-        //async void OnInfoWindowClickedAsync(object sender, PinClickedEventArgs e)
-        //{
-        //    string pinName = ((Pin)sender).Label;
-        //    await DisplayAlert("Info Window Clicked", $"The info window was clicked for {pinName}.", "Ok");
-        //}
+       
     }
 }

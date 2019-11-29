@@ -138,15 +138,17 @@ namespace geolocation
 
         private async void ButtonClicked3(object sender, EventArgs e)
         {
-            var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
-            var x = await Geolocation.GetLocationAsync(request);
-            //var location = await Geolocation.GetLastKnownLocationAsync();
-            var location2 = new Location(16.43307340526658, 102.8255601788635);
+            //var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(6));
+            //var x = await Geolocation.GetLocationAsync(request);
+            ////var location = await Geolocation.GetLastKnownLocationAsync();
+            //var location2 = new Location(16.43307340526658, 102.8255601788635);
 
-            //TODO open navigation 
-            var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
-            var data = Map.OpenAsync(location2, options);
-            double distance = Location.CalculateDistance(x, location2, DistanceUnits.Kilometers);
+            ////TODO open navigation 
+            //var options = new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
+            //var data = Map.OpenAsync(location2, options);
+            //double distance = Location.CalculateDistance(x, location2, DistanceUnits.Kilometers);
+            await Navigation.PushAsync(new delivery());
+
         }
     }
 }
